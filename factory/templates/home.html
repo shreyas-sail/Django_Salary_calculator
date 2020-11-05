@@ -1,0 +1,123 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+
+
+<form action="add" method='post' style="color:lime; font-style: courier; "  >
+
+    {% csrf_token %}
+
+    <style>
+        .right {
+          position:fixed; 
+          top:180px;
+          right:80px; 
+          
+          width: 500px;
+          
+          padding: 10px;
+        }
+        </style>
+
+
+
+
+
+ Select MONTH: <select name="month" placeholder="Select",required>
+         <option value="0" >None</option>
+         <option value="1" >JAN</option>
+         <option value="2">FEB </option>
+         <option value="3">MAR</option>
+         <option value="4">APR</option>
+         <option value="5">MAY</option>
+         <option value="6">JUN</option>
+         <option value="7">JUL</option>
+         <option value="8">AUG</option>
+         <option value="9">SEP</option>
+         <option value="10">OCT</option>
+         <option value="11">NOV</option>
+         <option value="12">DEC</option>
+       </select><br><br>
+
+
+
+
+
+
+
+
+
+
+ Enter Emplyoee name :  <select name="name" placeholder="Select",required>
+       <!---- <option value="0" >None</option>-->
+        <option value="69.71,1" >Umesh Sulkar</option>
+        <option value="48.0769,2">Prasad </option>
+        <option value="43.269,3">Ajay</option>
+        <option value="40.865,4">Malikarjun</option>
+        <option value="26.442,5">Kiran</option>
+        <option value="26.442,6">Aspak</option>
+        <option value="26.442,7">Dastgir</option>
+        <option value="26.442,8">Arbaz</option>
+        <option value="26.442,9">Vinayak</option>
+        <option value="26.442,0">Irfan</option>
+      </select><br><br>
+ 
+ <!-- <input type="text" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px"  name="name" placeholder="Employee name.." required ><br> <br>
+ Enter Start date :<label for="start">Start date:</label>
+
+ <input type="date" id="start" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px"  name="start_work_date"
+        value="2019-01-01"
+        min="2019-01-01" max="2021-12-31"><br> <br>
+
+Enter End date :<label for="end">End date:</label>
+
+        <input type="date" id="end" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px"  name="end_work_date"
+               value="2019-01-01"
+               min="2019-01-01" max="2021-12-31"><br> <br> -->
+
+       
+
+ Enter the number of days :<input type="text" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px" name="days" required ><br> <br>
+
+
+ Enter the number of hours worked(per day) :<input type="text" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px" name="hr" required ><br> <br>
+
+ Enter the total extra hours :<input type="text" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px" name="basic_hr" required><br>  <br>
+
+
+ <!--Enter per hour wages :<input type="text" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px" name="rate" value= readonly><br><br>-->
+ Per Hour wages:{{rate_ret}}<br><br>
+
+ ET per hour wages :{{rate_ret}}<br><br>
+
+ <!----:<input type="text" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px" placeholder="₹"  name="et_rate" required><br><br>-->
+
+
+ <!--Enter travel allowance  :<input type="text" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px" placeholder="₹"  name="tv" ><br><br>-->
+
+
+<div class="right"> <!--Enter number of Sundays worked:<input type="text" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px ; alin" name="sun_days" required ><br> <br>-->
+        Enter number of hours on Sundays :<input type="text" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px ; alin" name="sun_hr" required ><br> <br>
+        Enter number days(PUBLIC HOLIDAY) :<input type="text" style="box-sizing: border-box ; border: 2px solid blue ; border-radius: 4px ; alin" name="hol_day" required ><br> <br>
+
+
+
+</div>
+
+ <input type="submit" style="background-color:yellowgreen;  " onclick={{rate_ret}}  >
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+{% endblock %}

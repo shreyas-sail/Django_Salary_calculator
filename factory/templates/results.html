@@ -1,0 +1,128 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+<form action="res" ' style="color:yellow; font-style: courier; "  >
+
+  <style>
+    table, th, td {
+      border: 3px solid blueviolet;
+    }
+    </style>
+
+
+
+
+    <style>
+      .right {
+        position:fixed; 
+        bottom:180px;
+        right:80px; 
+        
+        width: 500px;
+        
+        padding: 10px;
+        
+      }
+      </style>
+
+
+
+
+    <script>
+
+      function exportTableToExcel(tableID, filename = ''){
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+        
+        // Specify file name
+        filename = filename?filename+'..xltx ':'excel_data..xltx ';
+        
+        // Create download link element
+        downloadLink = document.createElement("a");
+        
+        document.body.appendChild(downloadLink);
+        
+        if(navigator.msSaveOrOpenBlob){
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob( blob, filename);
+        }else{
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+        
+            // Setting the file name
+            downloadLink.download = filename;
+            
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+
+
+    </script>
+
+
+
+
+
+  NAME:{{name}}    &nbsp; &nbsp;   &nbsp; &nbsp;   &nbsp; &nbsp;   &nbsp; &nbsp;   &nbsp; &nbsp;   &nbsp; &nbsp;   PAY SLIP FOR THE MONTH {{month}} 2020  <br><br>
+  DAYS:&nbsp;{{Number_days}}  &nbsp; &nbsp;      Public-Holiday:&nbsp;{{hol}}   &nbsp; &nbsp;OT:&nbsp;{{ot}}&nbsp;  &nbsp; Sunday hrs:&nbsp;{{su}} <br><br>
+
+  <table id="tblData">
+    <tr>
+      <th>Basic Salary(Rs) </th>
+      <th>Overtime Salary(Rs)</th> 
+      <th>Conveyance Allowance (Rs)</th>
+      <th>Sunday Salary(Rs) </th>
+      <th>Incentive(Rs)</th>
+      <th>Public holiday(Rs)</th>
+      <th>Total Salary(Rs) :</th>
+
+
+
+    </tr>
+
+    <tr>
+      <th>{{basic_wages}}</th>
+      <th>{{extra}}</th> 
+      <th>{{travel}}</th>
+      <th>{{sunday}}</th>
+      <th> {{incen}}  </th>
+      <th> {{holiday}} </th>
+      <th>{{Result}}</th>
+
+
+
+    </tr>
+
+    <!--<div class="right"><button onclick="exportTableToExcel('tblData','data')" style="background-color:yellowgreen;  ">Export </button></div>-->
+
+
+
+
+
+
+
+
+
+
+
+  <!--BASIC WAGES(in ₹):  {{basic_wages}} <br><br>
+  Extra time wages(in ₹):{{extra}} <br><br>
+  Conveyance Allowance (in ₹) :{{travel}} <br><br>
+  Sunday Wages (in ₹) :{{sunday}} <br><br>
+  Incentive (in ₹) :{{incen}} <br><br>
+  Public holiday :{{holiday}} <br><br>
+  Salary (in ₹):{{Result}} <br>-->
+
+
+</form>
+
+
+
+
+{% endblock %}
